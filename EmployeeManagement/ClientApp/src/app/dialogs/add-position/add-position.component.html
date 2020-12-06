@@ -1,0 +1,21 @@
+﻿Новая должность
+<table>
+  <tr>
+    <td>
+      <mat-form-field appearance="outline">
+        <label>
+          <input matInput [formControl]="positionControl">
+        </label>
+      </mat-form-field>
+    </td>
+    <td>
+      <div class="right-text">
+        Должность
+      </div>
+    </td>
+  </tr>
+</table>
+<div class="bottom-buttons">
+  <button mat-raised-button color="accent" (click)="dialogRef.close()">Закрыть</button>
+  <button mat-raised-button color="primary" (click)="add()">Добавить</button>
+</div>

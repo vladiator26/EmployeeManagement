@@ -1,0 +1,57 @@
+<body>
+<button mat-raised-button color="primary" id="addEmployee" (click)="addEmployee()">Добавить сотрудника</button>
+<button mat-raised-button color="primary" id="addPosition" (click)="addPosition()">Добавить должность</button>
+<table [dataSource]="dataSource" mat-table>
+
+  <ng-container matColumnDef="id">
+    <th *matHeaderCellDef mat-header-cell>
+      #
+    </th>
+    <td *matCellDef="let element" mat-cell> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="position">
+    <th *matHeaderCellDef mat-header-cell>
+      Должность
+    </th>
+    <td *matCellDef="let element" mat-cell> {{positionIdToName(element.positionId)}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th *matHeaderCellDef mat-header-cell>
+      Сотрудник
+    </th>
+    <td *matCellDef="let element" mat-cell> {{element.firstName + ' ' + element.lastName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="salary">
+    <th *matHeaderCellDef mat-header-cell>
+      Оклад
+    </th>
+    <td *matCellDef="let element" mat-cell>
+      {{element.salary}}$
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="hiringDate">
+    <th *matHeaderCellDef mat-header-cell>
+      Дата назначения
+    </th>
+    <td *matCellDef="let element" mat-cell> {{element.hiringDate | date:'d/M/yy'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="dismissalDate">
+    <th *matHeaderCellDef mat-header-cell>
+      Дата увольнения
+    </th>
+    <td *matCellDef="let element" mat-cell>
+      <span *ngIf="element.dismissalDate != null">
+        {{element.dismissalDate | date:'d/M/yy'}}
+      </span>
+    </td>
+  </ng-container>
+
+  <tr *matHeaderRowDef="displayedColumns; sticky: true" mat-header-row></tr>
+  <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+</table>
+</body>

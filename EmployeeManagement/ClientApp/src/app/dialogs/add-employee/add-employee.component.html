@@ -1,0 +1,102 @@
+﻿Новый сотрудник
+<table>
+  <tr>
+    <td>
+      <mat-form-field appearance="outline">
+        <label>
+          <input matInput [formControl]="lastNameControl">
+        </label>
+      </mat-form-field>
+    </td>
+    <td>
+      <div class="right-text">
+        Фамилия
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <mat-form-field appearance="outline">
+        <label>
+          <input matInput [formControl]="firstNameControl">
+        </label>
+      </mat-form-field>
+    </td>
+    <td>
+      <div class="right-text">
+        Имя
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <mat-form-field appearance="outline">
+        <label>
+          <mat-select [formControl]="positionControl">
+            <mat-option *ngFor="let item of data" [value]="item.id">
+              {{item.name}}
+            </mat-option>
+          </mat-select>
+        </label>
+      </mat-form-field>
+    </td>
+    <td>
+      <div class="right-text">
+        Должность
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <mat-form-field appearance="outline">
+        <label>
+          <input matInput [formControl]="salaryControl" type="number" min="1">
+        </label>
+        <span class="currency">
+          $
+        </span>
+      </mat-form-field>
+    </td>
+    <td>
+      <div class="right-text">
+        Оклад
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <mat-form-field appearance="outline">
+        <label>
+          <input matInput [matDatepicker]="hiringDate" [formControl]="hiringDateControl">
+        </label>
+        <mat-datepicker-toggle matSuffix [for]="hiringDate"></mat-datepicker-toggle>
+        <mat-datepicker #hiringDate></mat-datepicker>
+      </mat-form-field>
+    </td>
+    <td>
+      <div class="right-text">
+        Нанят
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <mat-form-field appearance="outline">
+        <label>
+          <input matInput [matDatepicker]="dismissalDate" [formControl]="dismissalDateControl">
+        </label>
+        <mat-datepicker-toggle matSuffix [for]="dismissalDate"></mat-datepicker-toggle>
+        <mat-datepicker #dismissalDate></mat-datepicker>
+      </mat-form-field>
+    </td>
+    <td>
+      <div class="right-text">
+        Уволен
+      </div>
+    </td>
+  </tr>
+</table>
+<div class="bottom-buttons">
+  <button mat-raised-button color="accent" (click)="dialogRef.close()">Закрыть</button>
+  <button mat-raised-button color="primary" (click)="add()">Добавить</button>
+</div>
